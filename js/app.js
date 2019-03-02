@@ -1,43 +1,19 @@
-(function(){
+(function () {
     var CLASE7 = {
-        init: function(){
+        init: function () {
             this.addEvents();
-            console.log('this.cacheElements', this.cacheElements.$btnSubmitForm);
         },
 
         addEvents: function(){
-            this.cacheElements.$btnSubmitForm.on('click', function(){
-                console.log('click');
-                this.sendInfo();
-            }.bind(this));            
-        },
+            $('#form-login').on('submit', function(event){
+                //detengo el envio del form
+                event.preventDefault();
 
-        cacheElements: {
-            $btnSubmitForm : $('#btn-submit-form'),
-            $inputUser : $('#input-user'),
-            $inputPassword : $('#input-pass'),
-        },
+                console.log('detengo el envio del form');
 
-        sendInfo : function(){
-            var user = this.cacheElements.$inputUser.val();
-            var pass = this.cacheElements.$inputPassword.val();
+                console.log( 'data', $('#form-login').serialize() + '&total=3000$' );
 
-            var data = {
-                user : user,
-                pass : pass
-            }
-
-            //enviamos al servidor
-            console.log('data', data);
-
-            //ajax se usa para la comunicacion cliente - servidor
-            $.ajax({
-                data: data,
-                type: 'post',
-                url: '',
-                success: function (result, status, xhr) {
-                  
-                }
+                //tambien hacemos uso de ajax
             });
         }
     }
